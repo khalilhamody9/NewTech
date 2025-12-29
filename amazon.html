@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Amazon-like Layout</title>
+  <link rel="stylesheet" href="amazon.css" />
+</head>
+
+<body>
+  <header class="topbar">
+    <a class="logo" href="#">
+      <span class="logo-word">amazon</span>
+    </a>
+
+    <a class="deliver" href="#">
+      <span class="line1">Deliver to</span>
+      <span class="line2">Israel</span>
+    </a>
+
+    <form class="search" role="search">
+      <select class="cat" aria-label="Category">
+        <option>All</option>
+        <option>PC</option>
+        <option>Video Games</option>
+        <option>Electronics</option>
+      </select>
+      <input class="q" type="search" placeholder="Search Amazon" />
+      <button class="go" aria-label="Search">Enter</button>
+    </form>
+
+    <a class="lang">EN</a>
+
+    <a class="acct" href="#">
+      <span class="line1">Hello, sign in</span>
+      <span class="line2">Account & Lists ▾</span>
+    </a>
+
+    <a class="orders">
+      <span class="line1">Returns</span>
+      <span class="line2">& Orders</span>
+    </a>
+
+    <a class="cart"> <span>Cart</span></a>
+  </header>
+
+  <div class="subnav">
+    <button>☰ All</button>
+    <a href="#">Cyber Monday</a>
+    <a href="#">Registry</a>
+    <a href="#">Prime Video</a>
+    <a href="#">Gift Cards</a>
+    <a href="#">Customer Service</a>
+    <a href="#">Sell</a>
+  </div>
+
+  <!-- Promo strip -->
+<section class="promo-strip compact">
+    <h2 class="promo-title">Effortless Rapid Trigger. FlashTap To Victory.</h2>
+
+    <img class="promo-hero" src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?q=80&w=800"
+      alt="Keyboard hero">
+
+    <div class="promo-thumbs">
+      <img
+        src="https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcQa2tvsfPjRZcbAPPokGeiDDfU3Jb1B0pyZU0JM57P5EWYmzRToQIuXPrOigivOB8DlbkeuVGN3u4UVnmEWyWOBj1OdAGx_ug8IqkddKqRHSbQRf2CveYQ17MFjVKZa1715Que9u0C80ug&usqp=CAc"
+        alt="thumb 1">
+      <img
+        src="https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcR-D6uVtCvtlnrqXIIYllOdUN14fXjfpD1HMUOBY_pxtRJVKWnJoBa6n1-7E22r-ufUeyimrNMuWdSE6-0XSp3skHKrc3ye55oLUFTmFzb7weODX0oApF25Tj7niO6w9jsvaFypXfQ&usqp=CAc"
+        alt="thumb 2">
+    </div>
+
+    <img class="promo-logo"
+      src="data:image/jpeg;base64,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"
+      alt="CORSAIR">
+
+    <a class="promo-link" href="#">Shop CORSAIR K70 Gaming Keyboards</a>
+
+  </section>
+  <section class="product-grid">
+          <nav class="breadcrumbs">
+            <a href="#">Video Games</a> › <a href="#">PC</a> ›
+            <a href="#">Accessories</a> › <a href="#">Gaming Keyboards</a>
+          </nav>  </section>
+  <main class="page">
+    <section class="product-grid">
+      <aside class="col-left media-col">
+        <div class="thumbs">
+          <img
+            src="https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcQdK8n75Z7lSkA180BbRD_3WGyKetXJzNntvDviD7rzhi_2r597Iutlj-qIBDLaep4JaP-OvQhf5xdopFnHwgXoUJDEXqoUGqR8gDO9HzSVhs01YH3wjJwivdwptxaW1KBaeLg9Uw&usqp=CAc"
+            alt="thumb1">
+          <img
+            src="https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcQfSHoloPuvHdGokpJ6xsQn7mI3FL3uVsVOy3cUahRBTuzEgX5QrBm4qlc8IBOHK5bjvhrU4GJrWfLw2lz-xtCEEwKpLRoTTXubBNy3BP9p-5AMcY8A5UTAEUnF3ElqBLSU5ra3oQ&usqp=CAc"
+            alt="thumb2">
+          <img
+            src="https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcRr0XLHlzM7EiehIBaVYBJNe5he-7HY1jnpdAYSqyCMeYKjQcph--MZmFH9X_Jg_i7KnQgXzu8OS2Y7RxaWDQQD4ZcjO4EWi_xqcFpZwRYQaHW_CeNW0JW-3UXK-HmEWRaJAtrpHA&usqp=CAc"
+            alt="thumb3">
+          <img src="https://m.media-amazon.com/images/I/71n9HQ15EvL._AC_SX679_.jpg" alt="thumb4">
+          <img src="https://m.media-amazon.com/images/I/71hqRI2js7L._AC_SX679_.jpg" alt="thumb5">
+          <img src="https://m.media-amazon.com/images/I/71UnL+fUeWL._AC_SY400_.jpg" alt="thumb6">
+        </div>
+
+        <div class="hero">
+          <img
+            src="https://1pc.co.il/images/thumbs/0008065_-corsair-k70-rgb-tkl-champion-cherry-mx-red-ch-9119010-na_510.jpeg"
+            alt="Corsair K70 RGB Keyboard">
+        </div>
+      </aside>
+
+      <section class="col-middle">
+        <div class="middle-top">
+
+          <h1 class="title">
+            Corsair K70 RGB TKL Champion Series Gaming Keyboard CH-911901A – OPX Switch (Renewed)
+          </h1>
+          <div class="rating">
+            <div class="stars">★★★★☆</div>
+            <a href="#" class="count">87 ratings</a>
+          </div>
+        </div>
+
+        <div class="middle-media product-info">
+          <p class="delivery-error">
+            This item cannot be shipped to your selected delivery location.<br>
+            Please choose a different delivery location.
+          </p>
+
+          <table class="info-table">
+            <tr>
+              <th>Brand</th>
+              <td>CyberpowerPC</td>
+            </tr>
+            <tr>
+              <th>Operating System</th>
+              <td>Windows 11 Home</td>
+            </tr>
+            <tr>
+              <th>CPU Model</th>
+              <td>Intel Core i9</td>
+            </tr>
+            <tr>
+              <th>CPU Speed</th>
+              <td>3.2&nbsp;GHz</td>
+            </tr>
+            <tr>
+              <th>Cache Size</th>
+              <td>36</td>
+            </tr>
+            <tr>
+              <th>Graphics Card Description</th>
+              <td>Dedicated</td>
+            </tr>
+          </table>
+
+        </div>
+
+        <div class="middle-bottom about">
+          <h2>About this item</h2>
+          <ul>
+            <li><b>Built for Champions:</b> CORSAIR CHAMPION SERIES products are designed and tested by top esports
+              professionals – helping to carry you to victory with a competition-grade keyboard featuring a portable and
+              space-saving tenkeyless form-factor, a detachable USB Type-C cable, and a tournament mode switch.</li>
+            <li><b>CORSAIR OPX RGB Optical-Mechanical Keyswitches:</b> Hyper-fast input with 1.0 mm actuation distance
+              and smooth linear travel, guaranteed for 150 million keystrokes.</li>
+            <li><b>Powered by CORSAIR AXON Hyper-Processing Technology:</b> Processes and transmits inputs up to 8×
+              faster than conventional gaming keyboards with 8 000 Hz hyper-polling, 4 000 Hz key scanning, and up to 20
+              layers of hardware RGB lighting while maintaining speed performance.</li>
+            <li><b>PBT Double-Shot Keycaps:</b> Precision-molded keycaps with a standard bottom-row layout resist wear,
+              fading, and shine, with 1.5 mm thickness for rigid stability.</li>
+            <li><b>Tournament-Ready:</b> Flip the tournament switch to focus on winning crucial games, automatically
+              locking to distraction-free static backlighting and disabling accidental macro activations.</li>
+          </ul>
+          <a href="#" class="report">Report an issue with this product or seller</a>
+        </div>
+      </section>
+
+      <aside class="col-right buy-box">
+        <h3>Refurbished – Excellent</h3>
+
+        <div class="price">
+          <span class="currency">$</span><span class="major">87</span><span class="minor">00</span>
+        </div>
+
+        <a href="#" class="link">FREE International Returns ▾</a>
+
+        <p class="import">
+          $19.96 Import Charges & <b>FREE Shipping</b> to Israel
+          <a href="#" class="link">Details ▾</a>
+        </p>
+
+        <p class="delivery">
+          FREE delivery <b>Thursday, December 18</b> to Israel.<br>
+          Order within <span class="green">14 hrs 22 mins</span>
+        </p>
+
+        <p class="fast">
+          Or fastest delivery <b>Tuesday, December 9</b>
+        </p>
+
+        <p class="location">
+          📍 <a href="#" class="link">Deliver to Israel</a>
+        </p>
+
+        <p class="lowstock"><b>Only 15 left in stock</b> – order soon.</p>
+
+        <button class="btn add">Add to Cart</button>
+        <button class="btn buy">Buy Now</button>
+        <!-- קופסת פרטים מתחת לבאי-בוקס -->
+<div class="meta-box">
+  <div class="row">
+    <div class="label">Ships from</div>
+    <div class="value">Amazon</div>
+  </div>
+  <div class="row">
+    <div class="label">Sold by</div>
+    <div class="value"><a href="#">Amazon Export Sales LLC</a></div>
+  </div>
+  <div class="row">
+    <div class="label">Condition</div>
+    <div class="value"><a href="#">Refurbished - Excellent</a></div>
+  </div>
+  <div class="row">
+    <div class="label">Returns</div>
+    <div class="value"><a href="#">90-day refund / replacement</a></div>
+  </div>
+
+  <details class="more">
+    <summary>▾ See more</summary>
+    <div class="more-body">
+      <!-- שים כאן מידע נוסף אם תרצה -->
+      <p class="muted">Eligible for gift options and international shipping policies.</p>
+    </div>
+  </details>
+
+  <label class="gift">
+    <input type="checkbox" />
+    <span>Add a gift receipt for easy returns</span>
+  </label>
+
+  <hr class="sep" />
+
+  <button class="btn outline">Add to List</button>
+</div>
+
+      </aside>
+
+
+    </section>
+  </main>
+</body>
+
+</html>

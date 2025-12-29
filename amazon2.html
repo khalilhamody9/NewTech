@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Simple Amazon-like Page</title>
+  <style>
+    /* בסיס פשוט */
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: Arial, sans-serif; color:#111; }
+
+    /* פס עליון */
+    .topbar{
+      display:flex; align-items:center; gap:12px;
+      padding:10px 12px; background:#FF5F15;
+    }
+    .logo{ font-weight:800; font-size:20px; text-decoration:none; color:#111; }
+    .deliver{ font-size:12px; }
+    .search{ flex:1; display:flex; }
+    .search select{ padding:6px; border:1px solid #ccc; }
+    .search input{ flex:1; padding:6px; border:1px solid #ccc; }
+    .search button{ padding:6px 10px; border:1px solid #ccc; background:#eee; cursor:pointer; }
+    .lang, .acct, .orders, .cart{ font-size:14px; text-decoration:none; color:#111; }
+
+    /* פס קישורים שני (במקום nav – Flex פשוט) */
+    .subnav{
+      display:flex; gap:20px; align-items:center;
+      padding:10px 16px; background:#F4A460;
+    }
+    .subnav button{ padding:6px 10px; border:1px solid #ccc; background:#fff; border-radius:6px; cursor:pointer; }
+    .subnav a{ text-decoration:none; color:#111; }
+
+    /* מכולת דף ותוכן */
+    .page{ max-width:1200px; margin:16px auto; padding:0 12px; }
+
+    /* גריד של 3 עמודות: שמאל | אמצע (פי 2) | ימין */
+    .product-grid{
+      display:grid;
+      grid-template-columns: 1fr 2fr 1fr;
+      gap:16px;
+      align-items:start;
+    }
+
+    /* עמודה 1: טאמבניילים + תמונה ראשית (2 עמודות פנימי) */
+    .media-col{
+      display:grid;
+      grid-template-columns: 90px 1fr;
+      gap:10px;
+    }
+    .thumbs{ display:flex; flex-direction:column; gap:10px; }
+    .thumbs img{
+      width:100%; height:90px; object-fit:cover;
+      border:1px solid #ddd; border-radius:6px;
+    }
+    .hero{
+      border:1px solid #ddd; border-radius:8px; background:#fff;
+      padding:8px; display:grid; place-items:center; min-height:420px;
+    }
+    .hero img{ width:100%; max-height:380px; object-fit:contain; }
+
+    /* עמודה 2: 3 שורות – עליון/אמצע/תחתון */
+    .col-middle{
+      display:grid;
+      grid-template-rows: auto 1fr auto;
+      gap:12px;
+    }
+    .breadcrumbs{ font-size:13px; color:#333; }
+    .breadcrumbs a{ color:#0a66c2; text-decoration:none; }
+    .title{ margin:6px 0; font-size:22px; }
+    .rating{ font-size:14px; }
+
+    .card{
+      border:1px solid #ddd; border-radius:8px; background:#fff; padding:12px;
+    }
+    .info-table{ width:100%; border-collapse:collapse; font-size:14px; }
+    .info-table th, .info-table td{ padding:6px 8px; vertical-align:top; }
+    .info-table th{ width:40%; text-align:left; }
+    .info-table tr+tr{ border-top:1px solid #eee; }
+
+    .about{ border:1px solid #ddd; border-radius:8px; background:#fff; padding:12px; }
+    .about h2{ margin:0 0 8px; font-size:18px; }
+    .about ul{ margin:0 0 0 18px; }
+
+    /* עמודה 3: Buy Box */
+    .buy-box{
+      border:1px solid #ddd; border-radius:8px; background:#fff; padding:12px;
+      display:flex; flex-direction:column; gap:10px;
+    }
+    .bb-price{ font-size:26px; font-weight:800; }
+    .btn{ padding:10px; border:1px solid #ccc; border-radius:999px; cursor:pointer; }
+    .btn.buy{ background:#ffa41c; }
+    .btn.add{ background:#ffd814; }
+  </style>
+</head>
+<body>
+
+  <!-- פס עליון -->
+  <div class="topbar">
+    <a class="logo" href="#">amazon 😊</a>
+
+    <div class="deliver">
+      <div>Deliver to</div>
+      <div><b>Israel</b></div>
+    </div>
+
+    <form class="search" onsubmit="return false;">
+      <select>
+        <option>All</option>
+        <option>PC</option>
+        <option>Video Games</option>
+        <option>Electronics</option>
+      </select>
+      <input type="text" placeholder="Search Amazon">
+      <button>Search</button>
+    </form>
+
+    <a class="lang" href="#">EN</a>
+    <a class="acct" href="#">Account</a>
+    <a class="orders" href="#">Orders</a>
+    <a class="cart" href="#">Cart</a>
+  </div>
+
+  <!-- פס קישורים פשוט -->
+  <div class="subnav">
+    <button>☰ All</button>
+    <a href="#">Cyber Monday</a>
+    <a href="#">Registry</a>
+    <a href="#">Prime Video</a>
+    <a href="#">Gift Cards</a>
+    <a href="#">Customer Service</a>
+    <a href="#">Sell</a>
+  </div>
+
+  <!-- גוף הדף -->
+  <main class="page">
+    <section class="product-grid">
+
+      <!-- עמודה 1: טאמבניילים + תמונה ראשית -->
+      <aside class="media-col">
+        <div class="thumbs">
+          <img src="https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcQdK8n75Z7lSkA180BbRD_3WGyKetXJzNntvDviD7rzhi_2r597Iutlj-qIBDLaep4JaP-OvQhf5xdopFnHwgXoUJDEXqoUGqR8gDO9HzSVhs01YH3wjJwivdwptxaW1KBaeLg9Uw&usqp=CAc" alt="thumb1">
+          <img src="https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcQfSHoloPuvHdGokpJ6xsQn7mI3FL3uVsVOy3cUahRBTuzEgX5QrBm4qlc8IBOHK5bjvhrU4GJrWfLw2lz-xtCEEwKpLRoTTXubBNy3BP9p-5AMcY8A5UTAEUnF3ElqBLSU5ra3oQ&usqp=CAc" alt="thumb2">
+          <img src="https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcRr0XLHlzM7EiehIBaVYBJNe5he-7HY1jnpdAYSqyCMeYKjQcph--MZmFH9X_Jg_i7KnQgXzu8OS2Y7RxaWDQQD4ZcjO4EWi_xqcFpZwRYQaHW_CeNW0JW-3UXK-HmEWRaJAtrpHA&usqp=CAc" alt="thumb3">
+        </div>
+        <div class="hero">
+          <img src="https://1pc.co.il/images/thumbs/0008065_-corsair-k70-rgb-tkl-champion-cherry-mx-red-ch-9119010-na_510.jpeg" alt="Main product">
+        </div>
+      </aside>
+
+      <!-- עמודה 2: כותרות + מידע + תיאור -->
+      <section class="col-middle">
+        <div>
+          <div class="breadcrumbs">
+            <a href="#">Video Games</a> › <a href="#">PC</a> › <a href="#">Accessories</a> › <a href="#">Gaming Keyboards</a>
+          </div>
+          <h1 class="title">Corsair K70 RGB TKL Champion Series – OPX Switch (Renewed)</h1>
+          <div class="rating">★★★★☆ • 87 ratings</div>
+        </div>
+
+        <div class="card">
+          <p style="color:#007a3d; margin:0 0 10px;">
+            This item cannot be shipped to your selected delivery location.
+          </p>
+          <table class="info-table">
+            <tr><th>Brand</th><td>CyberpowerPC</td></tr>
+            <tr><th>Operating System</th><td>Windows 11 Home</td></tr>
+            <tr><th>CPU Model</th><td>Intel Core i9</td></tr>
+            <tr><th>CPU Speed</th><td>3.2 GHz</td></tr>
+            <tr><th>Cache Size</th><td>36</td></tr>
+            <tr><th>Graphics</th><td>Dedicated</td></tr>
+          </table>
+          <a href="#" style="color:#0a66c2; text-decoration:none;">See more</a>
+        </div>
+
+        <div class="about">
+          <h2>About this item</h2>
+          <ul>
+            <li>Competition-grade tenkeyless keyboard with detachable USB-C.</li>
+            <li>OPX optical switches, 1.0 mm actuation.</li>
+            <li>Up to 8000 Hz polling with AXON technology.</li>
+            <li>PBT double-shot keycaps, durable and clear.</li>
+            <li>Tournament mode for distraction-free backlighting.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- עמודה 3: Buy Box -->
+      <aside class="buy-box">
+        <h3 style="margin:0;">Refurbished – Excellent</h3>
+        <div class="bb-price">$87<span style="font-size:14px; font-weight:400;">.00</span></div>
+        <a href="#" style="color:#0a66c2; text-decoration:none;">FREE International Returns</a>
+        <p style="margin:0;">$19.96 Import & <b>FREE Shipping</b> to Israel</p>
+        <p style="margin:0;">FREE delivery <b>Thu, Dec 18</b> • Order within <span style="color:#007a3d; font-weight:700;">14 hrs 22 mins</span></p>
+        <p style="margin:0;">Or fastest delivery <b>Tue, Dec 9</b></p>
+        <p style="margin:0;">📍 <a href="#" style="color:#0a66c2; text-decoration:none;">Deliver to Israel</a></p>
+        <p style="margin:0; color:#b12704; font-weight:700;">Only 15 left in stock – order soon.</p>
+        <button class="btn add">Add to Cart</button>
+        <button class="btn buy">Buy Now</button>
+      </aside>
+
+    </section>
+  </main>
+</body>
+</html>
