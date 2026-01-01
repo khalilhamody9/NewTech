@@ -1,6 +1,4 @@
-// ===============================
-// 1) BASE CLASS: Wizard
-// ===============================
+
 class Wizard {
   #health;
   #mana;
@@ -53,15 +51,10 @@ class Wizard {
     }
   }
 
-  // Base version (should be overridden)
   castSpell(opponent) {
     console.log(`${this.name} casts a very weak generic spell...`);
   }
 }
-
-// ===============================
-// 2) WIZARD TYPES
-// ===============================
 class FireWizard extends Wizard {
   castSpell(opponent) {
     if (!this.isAlive()) {
@@ -109,9 +102,6 @@ class IceWizard extends Wizard {
   }
 }
 
-// ===============================
-// 3) DUEL ENGINE
-// ===============================
 class Duel {
   constructor(wizardA, wizardB) {
     this.wizardA = wizardA;
@@ -150,9 +140,6 @@ class Duel {
   }
 }
 
-// ===============================
-// 4) MAIN
-// ===============================
 const wizard1 = new FireWizard("Gandalf", 100, 80);
 const wizard2 = new IceWizard("Saruman", 100, 80);
 
