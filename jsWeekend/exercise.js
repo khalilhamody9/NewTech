@@ -133,16 +133,26 @@ function repeatStr(count, src) {
   return result;
 }
 
-function toCamelCase(str) {
-  let words = str.split(/[-_]/);
+function accum(str) {
+  let result = "";
 
-  for (let i = 1; i < words.length; i++) {
-    words[i] =
-      words[i][0].toUpperCase() + words[i].substring(1);
+  for (let i = 0; i < str.length; i++) {
+    let part = str[i].toUpperCase();
+
+    for (let j = 0; j < i; j++) {
+      part += str[i].toLowerCase();
+    }
+
+    result += part;
+
+    if (i !== str.length - 1) {
+      result += "-";
+    }
   }
 
-  return words.join("");
+  return result;
 }
+
 function toWeirdCase(str) {
   let words = str.split(" ");
   let result = [];
