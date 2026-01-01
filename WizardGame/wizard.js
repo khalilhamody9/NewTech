@@ -16,7 +16,6 @@ class Wizard {
   }
 
   getStatus() {
-    // Safe snapshot (cannot modify internal state)
     return {
       name: this.name,
       health: this.#health,
@@ -41,7 +40,6 @@ class Wizard {
     return true;
   }
 
-  // Optional helper for IceWizard
   drainMana(amount) {
     if (amount <= 0) return;
 
