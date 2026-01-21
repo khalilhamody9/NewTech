@@ -13,7 +13,6 @@ export function handleWorldClick(state, row, col) {
 
     setTileType(state, row, col, state.selectedInventoryItem);
 
-    // אם הפריט נגמר - מבטל בחירה
     const stillExists = state.inventory.some(i => i.type === state.selectedInventoryItem);
     if (!stillExists) state.selectedInventoryItem = null;
 

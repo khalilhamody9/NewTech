@@ -3,22 +3,17 @@ import { renderTools, setSelectedTool } from "./tools.js";
 import { renderInventory, setSelectedInventoryItem, clearInventory } from "./inventory.js";
 import { handleWorldClick } from "./events.js";
 
-function qs(sel) { return document.querySelector(sel); }
+// DOM
+const landingEl = document.getElementById("landing");
+const gameEl = document.getElementById("game");
 
-const landingEl = qs("#landing");
-const gameEl = qs("#game");
+const startBtn = document.getElementById("startBtn");
+const resetBtn = document.getElementById("resetBtn");
+const homeBtn = document.getElementById("homeBtn");
 
-const startBtn = qs("#startBtn");
-const resetBtn = qs("#resetBtn");
-const homeBtn  = qs("#homeBtn"); 
-
-const worldEl = qs("#world");
-const toolsEl = qs("#tools");
-const inventoryEl = qs("#inventory");
-
-const selectedToolLabel = qs("#selectedToolLabel");
-const selectedItemLabel = qs("#selectedItemLabel");
-console.log("main.js loaded ✅");
+const worldEl = document.getElementById("world");
+const toolsEl = document.getElementById("tools");
+const inventoryEl = document.getElementById("inventory");
 
 const state = {
   initialWorldMap: createInitialWorld(),
@@ -38,35 +33,24 @@ function showGame() {
   gameEl.classList.add("page--active");
 }
 
-function syncLabels() {
-  if (selectedToolLabel) {
-    selectedToolLabel.textContent = state.selectedTool ? state.selectedTool : "None";
-  }
-  if (selectedItemLabel) {
-    selectedItemLabel.textContent = state.selectedInventoryItem ? state.selectedInventoryItem : "None";
-  }
-}
-
 function renderAll() {
   renderWorld(worldEl, state.worldMap);
 
   renderTools(toolsEl, state, (tool) => {
-    setSelectedInventoryItem(state, null);
-    setSelectedTool(state, tool);
+    state.selectedTool = tool;
+    state.selectedInventoryItem = null;
     renderAll();
   });
 
   renderInventory(inventoryEl, state, (type) => {
-    setSelectedInventoryItem(state, type);
+    state.selectedInventoryItem = type;
     renderAll();
   });
-
-  syncLabels();
 }
 
 function initGame() {
-  state.worldMap = state.initialWorldMap.map(r => r.slice());
-  clearInventory(state);
+  state.worldMap = state.initialWorldMap.map(row => row.slice());
+  state.inventory = [];
   state.selectedTool = null;
   state.selectedInventoryItem = null;
   renderAll();
@@ -84,10 +68,10 @@ worldEl.addEventListener("click", (e) => {
 });
 
 startBtn.addEventListener("click", () => {
-  console.log("START CLICK ✅");
   initGame();
   showGame();
 });
+
 homeBtn.addEventListener("click", () => {
   showLanding();
 });

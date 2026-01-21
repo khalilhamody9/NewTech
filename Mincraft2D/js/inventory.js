@@ -3,17 +3,17 @@ import { TILE } from "./constants.js";
 export function addToInventory(state, tileType) {
   if (tileType === TILE.EMPTY) return;
 
-  const idx = state.inventory.findIndex(i => i.type === tileType);
-  if (idx >= 0) state.inventory[idx].count++;
+  const index = state.inventory.findIndex(i => i.type === tileType);
+  if (index >= 0) state.inventory[index].count++;
   else state.inventory.push({ type: tileType, count: 1 });
 }
 
 export function removeFromInventory(state, tileType) {
-  const idx = state.inventory.findIndex(i => i.type === tileType);
-  if (idx < 0) return false;
+  const index = state.inventory.findIndex(i => i.type === tileType);
+  if (index < 0) return false;
 
-  state.inventory[idx].count--;
-  if (state.inventory[idx].count <= 0) state.inventory.splice(idx, 1);
+  state.inventory[index].count--;
+  if (state.inventory[index].count <= 0) state.inventory.splice(index, 1);
   return true;
 }
 
