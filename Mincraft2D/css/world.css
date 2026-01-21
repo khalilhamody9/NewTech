@@ -1,0 +1,32 @@
+.worldCanvas{
+  position: absolute;
+  inset: 0;
+  padding-bottom: 140px;
+  z-index: 1;
+
+  display: grid;
+  grid-template-columns: repeat(20, 48px);
+  grid-template-rows: repeat(12, 48px);
+  gap: 2px;
+
+  justify-content: center;
+  align-content: center;
+}
+
+.tile{
+  width: 48px;
+  height: 48px;
+  border: 1px solid rgba(255,255,255,.25);
+  image-rendering: pixelated;
+}
+
+.tile--empty{
+  background: transparent;
+  border: 1px dashed rgba(255,255,255,.20);
+}
+
+.tile--grass{ background: #2ecc71; }
+.tile--dirt{ background: #8e5a2b; }
+.tile--rock{ background: #9aa0a6; }
+.tile--wood{ background: #a56a2a; }
+.tile--leaf{ background: #1f7a3a; }

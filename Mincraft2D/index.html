@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>2D Minecraft</title>
+
+  <link rel="stylesheet" href="./css/main.css" />
+  <link rel="stylesheet" href="./css/ui.css" />
+  <link rel="stylesheet" href="./css/world.css" />
+</head>
+<body>
+
+<section id="landing" class="landing page page--active">
+    <div class="landing__overlay"></div>
+
+    <div class="landing__content">
+      <h1 class="landing__title">2D Minecraft</h1>
+      <p class="landing__sub">Choose tool → click tile → collect → place back</p>
+      <button id="startBtn" class="landing__btn">Start Game</button>
+    </div>
+  </section>
+
+  <section id="game" class="page">
+    <div class="gameUI">
+      <aside class="sidebar">
+        <div class="sideTop">
+          <button id="homeBtn" class="iconBtn" title="Home">🏠</button>
+          <button id="resetBtn" class="iconBtn" title="Reset">🔄</button>
+        </div>
+
+        <div id="tools" class="toolStack">
+        </div>
+      </aside>
+
+      <main class="stage">
+        <div id="world" class="worldCanvas" aria-label="world grid"></div>
+
+        <div class="hotbarWrap">
+          <div id="inventory" class="hotbar"></div>
+        </div>
+      </main>
+    </div>
+  </section>
+
+  <script type="module" src="./js/main.js"></script>
+</body>
+</html>

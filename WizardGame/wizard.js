@@ -138,6 +138,7 @@ class Duel {
   }
 }
 
+
 const wizard1 = new FireWizard("Gandalf", 100, 80);
 const wizard2 = new IceWizard("Saruman", 100, 80);
 
